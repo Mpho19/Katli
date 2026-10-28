@@ -267,3 +267,7 @@ body {
 .closing-block .closing-line { margin: 0 auto; }
 .cover-foot { flex-direction: column; align-items: center; gap: 1.6cqw; text-align: center; }
 .cover-foot .issue { font-size: 1.8cqw; white-space: nowrap; }
+
+/* Cover: drop the photo a little so her face sits below the KATLI title */
+.page.cover .ph.full { background: #1c0b0d; }
+.page.cover .ph.full img { top: 17cqw; height: 100%; object-position: 50% 0%; }
