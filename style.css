@@ -271,3 +271,29 @@ body {
 /* Cover: drop the photo a little so her face sits below the KATLI title */
 .page.cover .ph.full { background: #1c0b0d; }
 .page.cover .ph.full img { top: 17cqw; height: 100%; object-position: 50% 0%; }
+
+/* ===== Floating balloons & gifts behind the magazine ===== */
+#party { position: fixed; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; }
+.topbar, .stage, .controls { position: relative; z-index: 1; }
+.float {
+  position: absolute; bottom: -12vh; left: 0;
+  animation: rise linear infinite;
+  will-change: transform;
+}
+.float span {
+  display: block; line-height: 1;
+  animation: sway ease-in-out infinite alternate;
+  filter: drop-shadow(0 6px 10px rgba(0,0,0,.35));
+}
+@keyframes rise {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-125vh); }
+}
+@keyframes sway {
+  from { transform: translateX(-18px) rotate(-8deg); }
+  to   { transform: translateX(18px) rotate(8deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .float, .float span { animation: none; }
+  #party { display: none; }
+}
