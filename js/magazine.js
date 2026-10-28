@@ -89,6 +89,8 @@ function build(startPage = 0) {
   const { orientation, pw } = layout();
   currentOrientation = orientation;
   wrap.style.width = (orientation === "landscape" ? pw * 2 : pw) + "px";
+  wrap.classList.toggle("portrait", orientation === "portrait");
+  document.body.classList.toggle("is-portrait", orientation === "portrait");
 
   if (pageFlip) {
     pageFlip.destroy();
@@ -113,7 +115,7 @@ function build(startPage = 0) {
     usePortrait: true,
     maxShadowOpacity: 0.45,
     mobileScrollSupport: false,
-    flippingTime: 900,
+    flippingTime: orientation === "portrait" ? 1100 : 900,
     startPage
   });
   pageFlip.loadFromHTML(bookEl.querySelectorAll(".page"));
@@ -132,6 +134,7 @@ function updateCounter() {
   else if (currentOrientation === "landscape" && i + 1 < total - 1) counter.textContent = `Pages ${i + 1}–${i + 2}`;
   else counter.textContent = `Page ${i + 1} of ${total}`;
   if (i > 0) document.getElementById("hint").style.opacity = 0;
+  if (i > 2) document.body.classList.add("hint-seen");
 }
 
 document.getElementById("prev").addEventListener("click", () => pageFlip && pageFlip.flipPrev());
