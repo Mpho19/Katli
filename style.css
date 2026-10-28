@@ -272,28 +272,48 @@ body {
 .page.cover .ph.full { background: #1c0b0d; }
 .page.cover .ph.full img { top: 17cqw; height: 100%; object-position: 50% 0%; }
 
-/* ===== Floating balloons & gifts behind the magazine ===== */
-#party { position: fixed; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; }
+/* ===== Pink glow around the magazine ===== */
+.book-wrap {
+  filter: drop-shadow(0 0 18px rgba(255, 120, 170, .55)) drop-shadow(0 0 60px rgba(255, 92, 150, .35));
+}
+body::before {
+  content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 0;
+  background: radial-gradient(ellipse 55% 60% at 50% 48%, rgba(255, 110, 165, .16), transparent 70%);
+}
 .topbar, .stage, .controls { position: relative; z-index: 1; }
-.float {
-  position: absolute; bottom: -12vh; left: 0;
-  animation: rise linear infinite;
-  will-change: transform;
+
+/* ===== Glass effect on the cover writing ===== */
+.cover .masthead {
+  background: linear-gradient(170deg, rgba(255,255,255,.98) 0%, rgba(255,255,255,.72) 38%, rgba(255,235,245,.45) 52%, rgba(255,255,255,.85) 70%, rgba(255,255,255,.6) 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  -webkit-text-stroke: .25cqw rgba(255,255,255,.75);
+  text-shadow: none;
+  filter: drop-shadow(0 .5cqw 1.6cqw rgba(0,0,0,.35)) drop-shadow(0 0 2.5cqw rgba(255,160,200,.35));
 }
-.float span {
-  display: block; line-height: 1;
-  animation: sway ease-in-out infinite alternate;
-  filter: drop-shadow(0 6px 10px rgba(0,0,0,.35));
+.cover .cl {
+  background: linear-gradient(135deg, rgba(255,255,255,.22), rgba(255,255,255,.06));
+  -webkit-backdrop-filter: blur(8px) saturate(140%); backdrop-filter: blur(8px) saturate(140%);
+  border: .25cqw solid rgba(255,255,255,.35);
+  border-top-color: rgba(255,255,255,.6);
+  border-radius: 2.4cqw;
+  padding: 2.2cqw 2.8cqw;
+  box-shadow: 0 1cqw 3cqw rgba(0,0,0,.25), inset 0 .3cqw .6cqw rgba(255,255,255,.25);
+  text-shadow: 0 .2cqw .8cqw rgba(0,0,0,.45);
 }
-@keyframes rise {
-  from { transform: translateY(0); }
-  to   { transform: translateY(-125vh); }
+.cover .coverlines { gap: 2.4cqw 3cqw; }
+.cover .cover-foot {
+  border-top: none; padding: 2cqw 3cqw;
+  background: linear-gradient(135deg, rgba(255,255,255,.18), rgba(255,255,255,.05));
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+  border: .25cqw solid rgba(255,255,255,.3); border-radius: 2.4cqw;
 }
-@keyframes sway {
-  from { transform: translateX(-18px) rotate(-8deg); }
-  to   { transform: translateX(18px) rotate(8deg); }
+/* slimmer, clearer glass so the photo shows through */
+.cover .cl {
+  padding: 1.5cqw 2.2cqw; border-radius: 2cqw;
+  background: linear-gradient(135deg, rgba(255,255,255,.16), rgba(255,255,255,.03));
+  -webkit-backdrop-filter: blur(3px) saturate(130%); backdrop-filter: blur(3px) saturate(130%);
+  font-size: 2.2cqw;
 }
-@media (prefers-reduced-motion: reduce) {
-  .float, .float span { animation: none; }
-  #party { display: none; }
-}
+.cover .cl b { font-size: 3.5cqw; white-space: nowrap; }
+.cover .coverlines { gap: 2cqw 6cqw; margin-bottom: 3cqw; }
+.cover .cover-foot { padding: 1.4cqw 3cqw; background: linear-gradient(135deg, rgba(255,255,255,.14), rgba(255,255,255,.03)); -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px); }
