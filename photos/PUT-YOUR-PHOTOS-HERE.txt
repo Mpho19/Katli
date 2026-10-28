@@ -1,0 +1,9 @@
+Put Katli's photos in this folder.
+
+  cover.jpg                       -> the photo for the front cover
+  photo-01.jpg ... photo-32.jpg   -> the 32 photos, in the order you want them
+
+.jpeg and .png also work.
+iPhone .HEIC photos will not show in most browsers - convert them to JPG first.
+
+You can delete this text file once your photos are in.
