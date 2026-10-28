@@ -15,6 +15,8 @@ function candidates(key) {
     : [`photo-${String(key).padStart(2, "0")}`, `photo-${key}`, key, `photo (${key})`, `photo${key}`, `photo ${key}`, `Photo (${key})`];
   const list = [];
   names.forEach(n => EXTENSIONS.forEach(e => list.push(`${PHOTO_FOLDER}${encodeURI(n)}.${e}`)));
+  // also accept accidental double extensions like "photo-01.jpg.jpeg"
+  names.forEach(n => EXTENSIONS.forEach(e => list.push(`${PHOTO_FOLDER}${encodeURI(n)}.jpg.${e}`)));
   return list;
 }
 
