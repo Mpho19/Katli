@@ -7,6 +7,12 @@
    ========================================================= */
 
 const PHOTO_FOLDER = "photos/";
+
+/* If a photo is cut in the wrong place, set where to focus it here.
+   "50% 0%" = keep the very top, "50% 50%" = centre, "50% 100%" = bottom.
+   The first number moves left (0%) / right (100%). */
+const PHOTO_POSITIONS = {
+};
 const EXTENSIONS = ["jpg", "jpeg", "png", "JPG", "JPEG", "PNG", "webp"];
 
 function candidates(key) {
@@ -52,6 +58,7 @@ function fillPhotos(root) {
         img.alt = key === "cover" ? "Katli" : "";
         img.decoding = "async";
         img.src = src;
+        if (PHOTO_POSITIONS[key]) img.style.objectPosition = PHOTO_POSITIONS[key];
         el.appendChild(img);
       }
     });
